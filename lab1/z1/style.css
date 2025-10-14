@@ -79,7 +79,8 @@ footer{
 
 @media (max-width:1000px){
     .wrapper { flex-wrap: wrap; }
-    .right-col { flex-basis: 100%; }
+    /* Prawa kolumna teraz zajmuje całą przestrzeń flexa i jest zawijana pod spód */
+    .right-col { flex-basis: 100%; } 
 }
 
 @media (max-width: 600px){

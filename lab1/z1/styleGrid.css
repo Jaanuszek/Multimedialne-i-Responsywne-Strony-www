@@ -82,6 +82,7 @@ footer {
         grid-template-rows: auto auto;
     }
     .right-col {
+        /* Rozciągniecie elementu od pierwszej lini kolumny do ostatniej */
         grid-column: 1 / -1;
     }
 }

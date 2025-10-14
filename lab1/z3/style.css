@@ -1,5 +1,7 @@
 :root{
     --form-color: #55c77a;
+    --primary-color: azure;
+    --secondary-color: #ffb319;
 }
 
 *{
@@ -12,6 +14,7 @@ body{
     display: grid;
     gap: 10px;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 /* LAYOUT DLA TELEFONOW */
@@ -33,17 +36,20 @@ body >*{
 
 header{
     grid-area: header;
+    background-color: var(--primary-color);
     padding: 20px;
     display: flex;
 }
 
 .logo{
-    background-color: grey;
+    background-color: var(--secondary-color);
+    font-weight: 700;
     padding: 20px;
 }
 
 nav{
     grid-area: nav;
+    background-color: var(--primary-color);
     padding: 20px;
     text-align: center;
 }
@@ -83,7 +89,7 @@ main{
 
 .sidebar{
     grid-area: sidebar;
-    background-color: white;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,17 +139,26 @@ main{
 }
 
 .container{
-    background-color: azure;
     display: flex;
     flex-direction: column;
+    background-color: azure;
     padding: 20px;
     gap: 20px;
+}
+.container h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.container p{
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 .post{
     position: relative;
     padding: 80px;
-    background: linear-gradient(135deg, #b2e1ff 0%, #66b2ff 100%);
+    background: var(--secondary-color);
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
 }
 
@@ -169,10 +184,8 @@ main{
 .reservation-post{
     background-image: url('jpg/4.jpg');
     background-position: center;
-    background-size: cover;
-    max-width: 540px;
+    max-width: 100%;
     overflow: hidden;
-    margin: 10px auto;
 }
 
 .form{
@@ -236,11 +249,13 @@ main{
 
 .ads{
     grid-area: ads;
+    background-color: var(--primary-color);
     padding: 20px;
     text-align: center;
 }
 
 footer{
+    background-color: var(--primary-color);
     grid-area: footer;
     padding: 20px;
     text-align: center;
@@ -267,6 +282,9 @@ footer{
         top: 10px;
     }
 
+    .reservation-post{
+        max-width: 100%;
+    }
 }
 
 @media (min-width: 1024px){
@@ -290,4 +308,7 @@ footer{
         top: 10px;
     }
 
+    .reservation-post{
+        max-width: 100%;
+    }
 }
