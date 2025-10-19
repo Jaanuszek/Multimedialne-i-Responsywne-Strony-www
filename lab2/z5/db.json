@@ -1,0 +1,35 @@
+{
+  "categories": [
+    { "id": 1, "name": "Produkty spożywcze" },
+    { "id": 2, "name": "Produkty przemysłowe" },
+    { "id": 3, "name": "Napoje" },
+    { "id": 4, "name": "Słodycze" },
+    { "id": 5, "name": "Chemia gospodarcza" }
+  ],
+  "foodProducts": [
+    { "id": 1, "categoryId": 1, "name": "Chleb" },
+    { "id": 2, "categoryId": 1, "name": "Masło" },
+    { "id": 3, "categoryId": 1, "name": "Mleko" },
+    { "id": 4, "categoryId": 1, "name": "Jajka" },
+    { "id": 5, "categoryId": 3, "name": "Woda" },
+    { "id": 6, "categoryId": 3, "name": "Sok pomarańczowy" },
+    { "id": 7, "categoryId": 3, "name": "Herbata" },
+    { "id": 8, "categoryId": 4, "name": "Czekolada" },
+    { "id": 9, "categoryId": 4, "name": "Ciastka" },
+    { "id": 10, "categoryId": 4, "name": "Lizaki" }
+  ],
+  "industrialProducts": [
+    { "id": 1, "categoryId": 2, "name": "Mydło" },
+    { "id": 2, "categoryId": 2, "name": "Proszek do prania" },
+    { "id": 3, "categoryId": 2, "name": "Środki czystości" },
+    { "id": 4, "categoryId": 3, "name": "Butelka plastikowa" },
+    { "id": 5, "categoryId": 2, "name": "Mydło w płynie" },
+    { "id": 6, "categoryId": 3, "name": "Woda" },
+    { "id": 7, "categoryId": 5, "name": "Płyn do mycia naczyń" },
+    { "id": 8, "categoryId": 5, "name": "Odkamieniacz" },
+    { "id": 9, "categoryId": 5, "name": "Środek do czyszczenia szyb" },
+    { "id": 10, "categoryId": 1, "name": "Folia spożywcza" },
+    { "id": 11, "categoryId": 4, "name": "Cukierki" },
+    { "id": 12, "categoryId": 5, "name": "Płyn do mycia naczyń" }
+  ]
+}
