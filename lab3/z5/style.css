@@ -1,0 +1,29 @@
+canvas{
+    border: 1px solid black;
+}
+
+.controls{
+    display: flex;
+    flex-direction: column;
+}
+
+.control input{
+    display: block;
+    min-width: 800px;
+}
+
+#control1{
+    background-color: red;
+}
+
+#control2{
+    background-color: green;
+}
+
+#control3{
+    background-color: blue;
+}
+
+#control4{
+    background-color: pink;
+}

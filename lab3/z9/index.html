@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>3 kulki w linii — prosty Match-3</title>
+<style>
+  :root{--size:60px}
+  body{font-family:system-ui,Segoe UI,Roboto;display:flex;gap:20px;
+       align-items:flex-start;padding:20px;background:#f3f4f6;color:#111}
+  #game{display:grid;grid-template-columns:repeat(6,var(--size));grid-auto-rows:var(--size);
+        gap:6px}
+  .cell{width:var(--size);height:var(--size);border-radius:50%;
+        display:flex;align-items:center;justify-content:center;cursor:pointer;
+        box-shadow:0 2px 0 rgba(0,0,0,0.08) inset, 0 4px 12px rgba(0,0,0,0.06)}
+  .c0{background:#ff6b6b} .c1{background:#ffd166} .c2{background:#6bcB77}
+  .c3{background:#4da6ff} .c4{background:#b39cff}
+  #ui{display:flex;flex-direction:column;gap:8px}
+  button{padding:8px 12px;border-radius:8px;border:0;background:#111;color:#fff;cursor:pointer}
+  #score{font-weight:700}
+</style>
+</head>
+<body>
+  <div>
+    <h2>3 kulki w linii</h2>
+    <div id="game" aria-label="plansza"></div>
+  </div>
+  <div id="ui">
+    <div>Wynik: <span id="score">0</span></div>
+    <button id="shuffle">Przetasuj</button>
+    <div style="font-size:13px;color:#444;max-width:200px">
+      Kliknij dwie sąsiednie kulki, by je zamienić. Jeśli utworzysz linię ≥3, kulki znikają.
+    </div>
+  </div>
+
+<script>
+(() => {
+  const ROWS = 6, COLS = 6;
+  const colors = 5; // 0..4
+  const board = new Array(ROWS * COLS).fill(null);
+  const gameEl = document.getElementById('game');
+  const scoreEl = document.getElementById('score');
+  const shuffleBtn = document.getElementById('shuffle');
+  let score = 0;
+  let first = null;
+  // init DOM
+  for(let i=0;i<ROWS*COLS;i++){
+    const div = document.createElement('div');
+    div.className = 'cell';
+    div.dataset.i = i;
+    div.addEventListener('click', onCellClick);
+    gameEl.appendChild(div);
+  }
+
+  function randColor(){ return Math.floor(Math.random()*colors); }
+
+  function index(r,c){ return r*COLS + c; }
+
+  function pos(i){ return [Math.floor(i/COLS), i%COLS]; }
+
+  function setBoardRandom(){
+    for(let i=0;i<board.length;i++) board[i]=randColor();
+    // optionally ensure no initial matches:
+    removeInitialMatches();
+    render();
+  }
+
+  function removeInitialMatches(){
+    // simple fix: while there exist matches, randomize those cells
+    while(true){
+      const matches = findMatches();
+      if(matches.length===0) break;
+      for(const m of matches){
+        for(const i of m) board[i]=randColor();
+      }
+    }
+  }
+
+  function render(){
+    const cells = gameEl.children;
+    for(let i=0;i<cells.length;i++){
+      const c = board[i];
+      const el = cells[i];
+      el.className = 'cell ' + (c===null? '' : 'c'+c);
+      el.style.opacity = c===null? '0.12' : '1';
+      el.textContent = '';
+    }
+    scoreEl.textContent = score;
+  }
+
+  function onCellClick(e){
+    const i = Number(e.currentTarget.dataset.i);
+    if(first===null){ first = i; highlight(first); return; }
+    if(first === i){ first = null; render(); return; }
+    // check adjacency
+    const [r1,c1] = pos(first);
+    const [r2,c2] = pos(i);
+    const dist = Math.abs(r1-r2)+Math.abs(c1-c2);
+    if(dist !== 1){
+      first = i; render(); highlight(first); return;
+    }
+    swapAndResolve(first,i);
+    first = null;
+  }
+
+  function highlight(i){
+    render();
+    gameEl.children[i].style.boxShadow = '0 0 0 4px rgba(0,0,0,0.06) inset, 0 6px 20px rgba(0,0,0,0.08)';
+  }
+
+  function swapAndResolve(a,b){
+    swap(a,b);
+    const matches = findMatches();
+    if(matches.length===0){
+      // revert
+      swap(a,b);
+      render();
+      return;
+    }
+    // there are matches -> remove them and cascade
+    handleMatchesAndCascade();
+  }
+
+  function swap(a,b){
+    const t = board[a]; board[a]=board[b]; board[b]=t;
+  }
+
+  function findMatches(){
+    const found = [];
+    // horizontal
+    for(let r=0;r<ROWS;r++){
+      let run = [ index(r,0) ];
+      for(let c=1;c<COLS;c++){
+        const i = index(r,c), j = index(r,c-1);
+        if(board[i] !== null && board[i] === board[j]) run.push(i);
+        else { if(run.length>=3) found.push([...run]); run = [i]; }
+      }
+      if(run.length>=3) found.push([...run]);
+    }
+    // vertical
+    for(let c=0;c<COLS;c++){
+      let run=[ index(0,c) ];
+      for(let r=1;r<ROWS;r++){
+        const i=index(r,c), j=index(r-1,c);
+        if(board[i] !== null && board[i] === board[j]) run.push(i);
+        else { if(run.length>=3) found.push([...run]); run=[i]; }
+      }
+      if(run.length>=3) found.push([...run]);
+    }
+    return found;
+  }
+
+  function handleMatchesAndCascade(){
+    const matchSets = findMatches();
+    if(matchSets.length===0){ render(); return; }
+    // mark removals
+    const toRemove = new Set();
+    for(const m of matchSets){
+      for(const i of m) toRemove.add(i);
+    }
+    // scoring: 10 points per ball, combo bonus
+    const removed = toRemove.size;
+    score += removed * 10;
+    // remove
+    for(const i of toRemove) board[i]=null;
+    render();
+    // cascade (make things "fall down")
+    setTimeout(() => {
+      cascade();
+      // chain reactions
+      setTimeout(() => handleMatchesAndCascade(), 180);
+    }, 180);
+  }
+
+  function cascade(){
+    for(let c=0;c<COLS;c++){
+      let write = ROWS-1;
+      for(let r=ROWS-1;r>=0;r--){
+        const i = index(r,c);
+        if(board[i] !== null){
+          board[index(write,c)] = board[i];
+          if(write !== r) board[i]=null;
+          write--;
+        }
+      }
+      // fill top with new random
+      for(let r=write;r>=0;r--) board[index(r,c)] = randColor();
+    }
+    render();
+  }
+
+  shuffleBtn.addEventListener('click', ()=>{
+    setBoardRandom();
+  });
+
+  // start
+  setBoardRandom();
+
+})();
+</script>
+</body>
+</html>

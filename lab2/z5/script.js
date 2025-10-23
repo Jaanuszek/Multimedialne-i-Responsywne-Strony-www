@@ -38,10 +38,6 @@ async function loadData()
             foodRes.json()
         ]);
 
-        console.log("Categories Data:", catData);
-        console.log("Industrial Products Data:", indProdData);
-        console.log("Food Products Data:", foodData);
-
         catData.forEach(category => {
             const li = document.createElement('li');
             const inputId = `category-${category.id}`;
