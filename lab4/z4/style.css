@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-item{
+    max-width: 600px;
+}
+
+.content-item p{
+    background-color: orange;
+}
+
+.content-item img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#end{
+    height: 50px;
+}

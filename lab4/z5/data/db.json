@@ -1,0 +1,38 @@
+{
+  "section1": {
+    "title": "Sekcja 1",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/1.jpg",
+    "alt": "Obrazek sekcji 1"
+  },
+  "section2": {
+    "title": "Sekcja 2",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/2.jpg",
+    "alt": "Obrazek sekcji 2"
+  },
+  "section3": {
+    "title": "Sekcja 3",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/3.jpg",
+    "alt": "Obrazek sekcji 3"
+  },
+  "section4": {
+    "title": "Sekcja 4",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/4.jpg",
+    "alt": "Obrazek sekcji 4"
+  },
+  "section5": {
+    "title": "Sekcja 5",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/5.jpg",
+    "alt": "Obrazek sekcji 5"
+  },
+  "section6": {
+    "title": "Sekcja 6",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "jpg/6.jpg",
+    "alt": "Obrazek sekcji 6"
+  }
+}
