@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h2>ToDo List</h2>
+
+        <div class="controls">
+            <label for="copyMode">
+                Copy
+                <input type="checkbox" id="copyMode" />
+            </label>
+        </div>
+
+        <section class="lists">
+            <div class="panel">
+                <h3>Tasks To Do:</h3>
+                <ul id="todoList" class="list">
+                    <li class="item" draggable="true">Some Task 1</li>
+                    <li class="item" draggable="true">Some Task 2</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h3>Tasks Done:</h3>
+                <ul id="doneList" class="list">
+                    <li class="item" draggable="true">Some Task 3</li>
+                    <li class="item" draggable="true">Some Task 4</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

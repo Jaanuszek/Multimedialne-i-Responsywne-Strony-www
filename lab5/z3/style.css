@@ -1,0 +1,71 @@
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+}
+
+.container{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container h2{
+    text-align: center;
+}
+
+.controls{
+    /* control area (checkbox etc.) */
+    margin-bottom: 8px;
+}
+
+.lists
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: large;
+    gap:10px;
+}
+
+.panel{
+    flex: 1;
+}
+
+.panel ul{
+    list-style-type: none;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    height: 300px;
+    max-height: 300px;
+    overflow: auto;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.list.dragover-accept{
+    background: #ecfdf5;
+    border-color: #34d399;
+}
+.list.dragover-deny{
+    background: #fff1f2;
+    border-color: #f87171;
+}
+.item.dragging{
+    opacity: 0.5;
+}
+
+.item{
+    padding: 5px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
