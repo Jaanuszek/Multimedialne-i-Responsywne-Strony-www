@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aplikacja głosowa</h1>
+            <button id="startListening">Start słuchania</button>
+            <button id="stopListening">Stop</button>
+            <p id="status">Kliknij "Start słuchania" aby rozpocząć</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn" data-page="home">Home</button>
+            <button class="nav-btn" data-page="form">Formularz</button>
+            <button class="nav-btn" data-page="settings">Ustawienia</button>
+        </nav>
+
+        <section id="home" class="page active">
+            <h2>Strona główna</h2>
+            <p>Witaj w aplikacji wspierającej osoby z problemami ze wzrokiem.</p>
+            <p><strong>Komendy głosowe:</strong></p>
+            <ul>
+                <li>"idź do home" / "idź do formularz" / "idź do ustawienia"</li>
+                <li>"szukaj [fraza]" - wyszukiwanie w Google</li>
+                <li>"youtube [fraza]" - wyszukiwanie na YouTube</li>
+                <li>"zaznacz [nazwa]" - zaznacz checkbox</li>
+                <li>"odznacz [nazwa]" - odznacz checkbox</li>
+                <li>"aktywuj [nazwa]" - focus na pole</li>
+                <li>"wpisz [tekst]" - wpisz tekst w aktywne pole</li>
+            </ul>
+        </section>
+
+        <section id="form" class="page">
+            <h2>Formularz</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nameInput">Imię:</label>
+                    <input type="text" id="nameInput" name="imię">
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Email:</label>
+                    <input type="email" id="emailInput" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="messageInput">Wiadomość:</label>
+                    <textarea id="messageInput" name="wiadomość"></textarea>
+                </div>
+            </form>
+        </section>
+
+        <section id="settings" class="page">
+            <h2>Ustawienia</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="notifications" name="powiadomienia">
+                    Powiadomienia
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="darkMode" name="tryb ciemny">
+                    Tryb ciemny
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="autoSave" name="automatyczny zapis">
+                    Automatyczny zapis
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="soundEffects" name="efekty dźwiękowe">
+                    Efekty dźwiękowe
+                </label>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
