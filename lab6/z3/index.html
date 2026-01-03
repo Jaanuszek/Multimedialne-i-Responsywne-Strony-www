@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="mode-selector">
+            <h2>Wybierz tryb:</h2>
+            <div class="buttons">
+                <button id="singleBtn" class="mode-btn active">Pojedyńcza komenda</button>
+                <button id="continuousBtn" class="mode-btn">Tryb ciągu słów</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="control-btn start">Nasłuchuj</button>
+            <button id="stopBtn" class="control-btn stop" disabled>Przestań nasłuchiwać</button>
+            <button id="clearBtn" class="control-btn clear">Wyczyść wyniki</button>
+        </div>
+
+        <div class="status">
+            <p>Status: <span id="status">Gotowy</span></p>
+            <p>Tryb: <span id="currentMode">Pojedyńcza komenda</span></p>
+        </div>
+
+        <div class="results">
+            <h2>Wyniki:</h2>
+            <div id="output" class="output">
+                <p class="placeholder">Twoja mowa pojawi się tutaj...</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
